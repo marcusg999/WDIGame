@@ -25,12 +25,24 @@
               var canvas = document.getElementById("myCanvas");
               var ctx = canvas.getContext("2d");
 
+              var x = canvas.width/2;
+              var y = canvas.height-30;
+              var dx = 2;
+              var dy = -2;
 
+              function draw() {
               ctx.beginPath();
-              ctx.arc(240, 160, 8, 0, Math.PI*2, false);
+              ctx.arc(x, y, 8, 0, Math.PI*2);
               ctx.fillStyle = "white";
               ctx.fill();
               ctx.closePath();
+              x += dx;
+              y += dy;
+
+              }
+
+              setInterval (draw,10);
+
 
               ctx.beginPath();
               ctx.paddle(160, 10, 100, 40);
