@@ -1,3 +1,4 @@
-              #myCanvas {
-                border:5px solid black;
-            }
+#myCanvas {
+      display: block;
+      margin:0;
+}

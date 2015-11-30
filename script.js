@@ -6,27 +6,35 @@
               var canvas = document.getElementById('myCanvas');
               var context = canvas.getContext('2d');
               var x = 108;
-              var y = 370;
+              var y = 369;
               var width = 220;
               var height = 28;
               var imageObj = new Image();
               imageObj.onload = function() {
-                context.drawImage(imageObj, x, y, width, height);
+              context.drawImage(imageObj, x, y, width, height);
               };
+
               imageObj.src = "images/turntable.jpg";
 
+              var canvas = document.getElementById("myCanvas");
+              var ctx = canvas.getContext("2d");
               var x = canvas.width/2;
               var y = canvas.height-30;
+              var dx = 2;
+              var dy = -2;
 
-              function draw() {
+              function draw (){
               ctx.beginPath();
-              ctx.arc(x, y, 15, 5, Math.PI*4, false);
+              ctx.arc(x, y, 10, 0, Math.PI*2);
               ctx.fillStyle = "white";
               ctx.fill();
               ctx.closePath();
-              y += dx;
-              x += dy;
-}
-              setInterval(draw, 10);
+              x += dx;
+              y += dy;
+            }
+              setInterval(draw,10);
+
+
+
 
 
