@@ -15,9 +15,18 @@
               };
               imageObj.src = "images/turntable.jpg";
 
+              var x = canvas.width/2;
+              var y = canvas.height-30;
+
+              function draw() {
               ctx.beginPath();
-              ctx.arc(240, 160, 20, 0, Math.PI*2, false);
-              ctx.fillStyle = "black";
+              ctx.arc(x, y, 15, 5, Math.PI*4, false);
+              ctx.fillStyle = "white";
               ctx.fill();
               ctx.closePath();
+              y += dx;
+              x += dy;
+}
+              setInterval(draw, 10);
+
 
