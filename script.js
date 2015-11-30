@@ -15,3 +15,9 @@
               };
               imageObj.src = "images/turntable.jpg";
 
+              ctx.beginPath();
+              ctx.arc(240, 160, 20, 0, Math.PI*2, false);
+              ctx.fillStyle = "black";
+              ctx.fill();
+              ctx.closePath();
+
