@@ -30,24 +30,52 @@
               var dx = 2;
               var dy = -2;
 
-              function draw() {
+              function drawBall() {
               ctx.beginPath();
-              ctx.arc(x, y, 8, 0, Math.PI*2);
-              ctx.fillStyle = "white";
+              ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+              ctx.fillStyle = "purple";
               ctx.fill();
               ctx.closePath();
+              }
+
+              function draw() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              drawBall();
+
+              if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+                  dx = -dx;
+              }
+              if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                  dy = -dy;
+              }
+
               x += dx;
               y += dy;
-
               }
+
+              setInterval(draw, 10);
 
               setInterval (draw,10);
 
+              var ballRadius = 8;
+               if (y + dy < 0) {
 
-              ctx.beginPath();
-              ctx.paddle(160, 10, 100, 40);
-              ctx.stroke();
-              ctx.closePath();
+               }
+               if (y + dy > canvas.height) {
+                  dy = -dy;
+               }
+               if (x + dx > canvas.width || x + dx < 0) {
+                  dx = -dx;
+               }
+               if (y + dy > canvas.height || y + dy < 0) {
+                  dy = -dy;
+
+               };
+
+
+
+
+
 
 
 
