@@ -1,76 +1,113 @@
-              var canvas = document.getElementById('myCanvas');
-              var context = canvas.getContext('2d');
-              var x = 188;
-              var y = 39;
-              var width = 250;
-              var height = 37;
-              var imageObj = new Image();
-              imageObj.onload = function() {
-              context.drawImage(imageObj, x, y, width, height);
-              };
-              imageObj.src = "images/turntable.jpg";
 
-              var c=document.getElementById("myCanvas");
-              var ctx=c.getContext("2d");
-              var img=document.getElementById("Vinyl_Tbg");
-              ctx.drawImage(img,10,10);
+            function setup(){
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext('2d');
+            canvas.width = 800;
+            canvas.height = 600;
+            var image = new Image();
+            image.onload = function () {
+            ctx.drawImage(image,5,5);
+            };
+            image.src = "images/VinylRecords_TriangleWeb.jpg";
+            }
+            window.onload = setup;
 
-              var canvas = document.getElementById('myCanvas');
-              var ctx = canvas.getContext("2d");
-              var x = canvas.width/2;
-              var y = canvas.height-30;
-              var dx = 2;
-              var dy = -2;
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("Vinyl_Tbg");
 
-              var canvas = document.getElementById("myCanvas");
-              var ctx = canvas.getContext("2d");
 
-              var x = canvas.width/2;
-              var y = canvas.height-30;
-              var dx = 2;
-              var dy = -2;
+            var imageObj = new Image();
+            imageObj.onload = function() {
+            ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+             };
 
-              function drawBall() {
-              ctx.beginPath();
-              ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-              ctx.fillStyle = "purple";
-              ctx.fill();
-              ctx.closePath();
-              }
+            var c=document.getElementById("myCanvas");
+            var ctx=c.getContext("2d");
 
-              function draw() {
-              ctx.clearRect(0, 0, canvas.width, canvas.height);
-              drawBall();
+            ctx.drawImage(img,10,10);
 
-              if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
-                  dx = -dx;
-              }
-              if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
-                  dy = -dy;
-              }
+            var paddleHeight = 10;
+            var paddleWidth = 75;
+            var paddleX = (canvas.width-paddleWidth)/2;
 
-              x += dx;
-              y += dy;
-              }
+            var rightPressed = false;
+            var leftPressed = false;
 
-              setInterval(draw, 10);
 
-              setInterval (draw,10);
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var ballRadius = 10;
+            var x = canvas.width/2;
+            var y = canvas.height-30;
+            var dx = 2;
+            var dy = -2;
+            var paddleHeight = 10;
+            var paddleWidth = 75;
+            var paddleX = (canvas.width-paddleWidth)/2;
+            var rightPressed = false;
+            var leftPressed = false;
 
-              var ballRadius = 8;
-               if (y + dy < 0) {
+            document.addEventListener("keydown", keyDownHandler, false);
+            document.addEventListener("keyup", keyUpHandler, false);
 
-               }
-               if (y + dy > canvas.height) {
-                  dy = -dy;
-               }
-               if (x + dx > canvas.width || x + dx < 0) {
-                  dx = -dx;
-               }
-               if (y + dy > canvas.height || y + dy < 0) {
-                  dy = -dy;
+            function keyDownHandler(e) {
+                if(e.keyCode == 39) {
+                    rightPressed = true;
+                }
+                else if(e.keyCode == 37) {
+                    leftPressed = true;
+                }
+            }
+            function keyUpHandler(e) {
+                if(e.keyCode == 39) {
+                    rightPressed = false;
+                }
+                else if(e.keyCode == 37) {
+                    leftPressed = false;
+                }
+            }
 
-               };
+            function drawBall() {
+                ctx.beginPath();
+                ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+            function drawPaddle() {
+                ctx.beginPath();
+                ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+                ctx.fillStyle = "#0095DD";
+                ctx.fill();
+                ctx.closePath();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawBall();
+                drawPaddle();
+
+                if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
+                    dx = -dx;
+                }
+                if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                    dy = -dy;
+                }
+
+                if(rightPressed && paddleX < canvas.width-paddleWidth) {
+                    paddleX += 7;
+                }
+                else if(leftPressed && paddleX > 0) {
+                    paddleX -= 7;
+                }
+
+                x += dx;
+                y += dy;
+            }
+
+            setInterval(draw, 10);
+
 
 
 
