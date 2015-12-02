@@ -21,13 +21,15 @@ var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 5;
+var brickRowCount = 13;
 var brickColumnCount = 6;
 var brickWidth = 75;
-var brickHeight = 20;
+var brickHeight = 10;
 var brickPadding = 10;
-var brickOffSetTop = 205;
-var brickOffSetLeft = 30;
+var brickOffSetTop = 120;
+var brickOffSetLeft = 20;
+var score = 0;
+var lives =999
 //var switchTurn = reload;
 
 
@@ -108,7 +110,7 @@ function keyDownHandler(e) {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "brown";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
@@ -126,10 +128,12 @@ function drawPaddle2() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "images/turntable.jpg";
     ctx.fill();
     ctx.closePath();
 }
+
+
 
 function drawBricks() {
   for(c=0; c<brickColumnCount; c++) {
@@ -156,10 +160,27 @@ function collisionDetection() {
                 if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++;
+                    if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN, CONGRATULATIONS!");
+                        document.location.reload();
+                    }
                 }
             }
         }
     }
+}
+
+function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: "+score, 8, 20);
+}
+
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
 
 function draw() {
@@ -197,15 +218,7 @@ function draw() {
     }
 
     x += dx;
-    y += dy;
+    y += dy;requestAnimationFrame(draw);
 }
 
-
-//finish switchTurn Function
-  // function switchTurn() {
-  //       document.location.reload(),
-
-  //       }
-
-
-setInterval(draw, 10);
+draw();
