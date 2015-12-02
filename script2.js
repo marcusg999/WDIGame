@@ -1,7 +1,7 @@
           window.onload = function (){
             var canvas = document.getElementById("myCanvas"),
               c=canvas.getContext("2d");
-            c.fillStyle = url "images/VinylRecords_TriangleWeb.jpg";
+            c.fillStyle =
             c.fillRect(0,0, canvas.width, canvas.height);
 
           };

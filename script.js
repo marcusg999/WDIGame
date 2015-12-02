@@ -22,7 +22,7 @@ var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
 var brickRowCount = 5;
-var brickColumnCount = 8;
+var brickColumnCount = 6;
 var brickWidth = 75;
 var brickHeight = 20;
 var brickPadding = 10;
@@ -108,7 +108,7 @@ function keyDownHandler(e) {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "brown";
     ctx.fill();
     ctx.closePath();
 }
@@ -126,7 +126,7 @@ function drawPaddle2() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
@@ -183,8 +183,8 @@ function draw() {
 
         }
          else {
-       alert ("PlayerTwo!");
-       document.location.reload();
+       // alert ("PlayerTwo!");
+       // document.location.reload();
 
          }
     }
