@@ -26,8 +26,8 @@ var brickColumnCount = 6;
 var brickWidth = 75;
 var brickHeight = 10;
 var brickPadding = 10;
-var brickOffSetTop = 120;
-var brickOffSetLeft = 20;
+var brickOffSetTop = 100;
+var brickOffSetLeft = 39;
 var score = 0;
 var lives =999
 //var switchTurn = reload;
@@ -77,16 +77,11 @@ for(c=0; c<brickColumnCount; c++) {
     }
 
 }
-/////////
-
-
-
 
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
 
-//
 
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
@@ -106,7 +101,6 @@ function keyDownHandler(e) {
 }
 
 
-
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
@@ -124,11 +118,11 @@ function drawPaddle2() {
     ctx.fill();
     ctx.closePath();
 }
-/////
+///////////
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "images/turntable.jpg";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
