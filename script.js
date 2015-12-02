@@ -3,70 +3,36 @@ var ctx = canvas.getContext("2d");
 ////////////
 
 //////////////////
-var ballRadius = 10;
+var ballRadius = 8;
 var x = canvas.width/2;
 var y = canvas.height-30;
 var dx = 2;
 var dy = -2;
-
-
 //2nd paddle
-var paddleY = (canvas.width-paddleWidth)/2;
+
 var paddleHeight = 10;
 var paddleWidth = 75;
+var paddleY = (canvas.width-paddleWidth)/2;
 
-//
+///2nd Ball
+
+//////////
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 13;
-var brickColumnCount = 6;
+var brickRowCount = 1;
+var brickColumnCount = 7;
 var brickWidth = 75;
 var brickHeight = 10;
 var brickPadding = 10;
 var brickOffSetTop = 100;
-var brickOffSetLeft = 39;
+var brickOffSetLeft = 29;
 var score = 0;
 var lives =999
 //var switchTurn = reload;
 
-
-//rotating the bricks
-// var i = 0;
-// var image = new Image();
-// image.src = "Gold_Vinyl.jpg"
-
-// function loop() {
-//   setTimeout (function() {
-//     1++;
-//     c.clearRect(0, 0, 500, 500);
-
-//     drawImageRot(image, 250, 250, 120, 120, i);
-//     loop();
-//   }1000/fps)
-// }
-
-// function drawImageRot(img,x,y,width,height,deg){
-
-//     //Convert degrees to radian
-//     var rad = deg * Math.PI / 180;
-
-//     //Set the origin to the center of the image
-//     ctx.translate(x + width / 2, y + height / 2);
-
-//     //Rotate the canvas around the origin
-//     ctx.rotate(rad);
-
-//     //draw the image
-//     ctx.drawImage(img,width / 2 * (-1),height / 2 * (-1),width,height);
-
-//     //reset the canvas
-//     ctx.rotate(rad * ( -1 ) );
-//     ctx.translate((x + width / 2) * (-1), (y + height / 2) * (-1));}
-
-///////
 
 var bricks = [];
 for(c=0; c<brickColumnCount; c++) {
@@ -81,8 +47,14 @@ for(c=0; c<brickColumnCount; c++) {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener("mousemove", mouseMoveHandler, false);
 
-
+function mouseMoveHandler(e) {
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if(relativeX > 0 && relativeX < canvas.width) {
+        paddleY = relativeX - paddleWidth/2;
+    }
+}
 function keyDownHandler(e) {
     if(e.keyCode == 39) {
         rightPressed = true;
@@ -113,8 +85,8 @@ function drawBall() {
 
 function drawPaddle2() {
     ctx.beginPath();
-    ctx.rect(paddleY, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "red";
+    ctx.rect(paddleY, 300, paddleWidth, paddleHeight);
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
@@ -122,7 +94,7 @@ function drawPaddle2() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
