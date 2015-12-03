@@ -104,10 +104,6 @@ function drawBall() {
 ////////// constructor function
 
 
-
-///////////////////////////////
-//second paddle
-
 function drawPaddle2() {
     ctx.beginPath();
     ctx.rect(paddleY, 300, paddleWidth, paddleHeight);
