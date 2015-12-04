@@ -1,26 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-////////////constructor function
 
-// function Canvas(canvasID, width, height) {
-//     this.canvas = document.createElement('Canvas');
-
-//     this.canvas.width = width || 400;
-//     this.canvas.height = height || 400;
-
-//     this.context = this.canvas.getContext('2d');
-
-//     this.canvas.style.border = "1px solid";
-//     this.canvas.id = canvasID;               // or use name
-
-//     document.body.appendChild(this.canvas);
-//     canvas1.context.fillRect (0, 0, 400, 400);
-// }
-
-// var canvas1 = new Canvas('canvas1');
-
-//////////////////////
 var ballRadius = 8;
 var x = canvas.width/2;
 var y = canvas.height-30;
@@ -40,13 +21,13 @@ var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 6;
-var brickColumnCount = 1;
+var brickRowCount = 1;
+var brickColumnCount = 6;
 var brickWidth = 75;
 var brickHeight = 10;
 var brickPadding = 10;
 var brickOffSetTop = 100;
-var brickOffSetLeft = 29;
+var brickOffSetLeft = 39;
 var score = 0;
 var lives =3
 
@@ -92,12 +73,25 @@ function keyDownHandler(e) {
     }
 }
 
+////////////constructor function
+// function Paddle() {
+//     this.ctx.beginPath = ctx.beginPath();
+//     this.ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight) = ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+//     this.ctx.fillStyle = ctx.fillStyle = "color";
+//     this.ctx.fill = ctx.fill();
+//     this.ctx.closePath = ctx.closePath();
 
+// }
+
+//  Paddle1 = new Paddle1 ("")
+//  Paddle1
+
+//////////////////////
 
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
@@ -107,7 +101,7 @@ function drawBall() {
 function drawPaddle2() {
     ctx.beginPath();
     ctx.rect(paddleY, 300, paddleWidth, paddleHeight);
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
 }
@@ -115,7 +109,7 @@ function drawPaddle2() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "black";
     ctx.fill();
     ctx.closePath();
 }
@@ -190,6 +184,8 @@ function draw() {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         }
+
+
         else {
             lives--;
             if(!lives) {
@@ -204,6 +200,7 @@ function draw() {
                 paddleX = (canvas.width-paddleWidth)/2;
 
             }
+
         }
     }
 
@@ -220,10 +217,10 @@ function draw() {
 }
 
 draw();
-// function switchTurn() {
-//         document.location.reload();
-//           alert ("player 2 your up!")
-//         }
+function switchTurn() {
+        document.location.reload();
+          alert ("Player 2 your up!")
+        }
 
 
 
