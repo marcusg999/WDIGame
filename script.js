@@ -21,7 +21,7 @@ var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
-var brickRowCount = 1;
+var brickRowCount = 3;
 var brickColumnCount = 6;
 var brickWidth = 75;
 var brickHeight = 10;
@@ -29,7 +29,7 @@ var brickPadding = 10;
 var brickOffSetTop = 100;
 var brickOffSetLeft = 39;
 var score = 0;
-var lives =3
+var lives =2
 
 
 
@@ -100,7 +100,7 @@ function drawBall() {
 
 function drawPaddle2() {
     ctx.beginPath();
-    ctx.rect(paddleY, 300, paddleWidth, paddleHeight);
+    ctx.rect(paddleY, 300, 225, paddleHeight);
     ctx.fillStyle = "red";
     ctx.fill();
     ctx.closePath();
@@ -144,7 +144,7 @@ function collisionDetection() {
                     score++;
                     if(score == brickRowCount*brickColumnCount) {
                         alert("CONGRATULATIONS Black & Red on working together to Bring Harmony to the Universe! You WIN!");
-                        (selector).easyModal()
+
                         document.location.reload();
                     }
                 }
@@ -152,6 +152,9 @@ function collisionDetection() {
         }
     }
 }
+$(function() {
+    $(selector).easyModal();
+});
 
 function drawScore() {
     ctx.font = "26px Arial";
@@ -207,7 +210,6 @@ function draw() {
     else if(leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
-
 
     x += dx;
     y += dy;
