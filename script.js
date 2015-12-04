@@ -84,7 +84,7 @@ function keyDownHandler(e) {
 // }
 
 //  Paddle1 = new Paddle1 ("")
-//  Paddle1
+//  Paddle1.ctx
 
 //////////////////////
 
