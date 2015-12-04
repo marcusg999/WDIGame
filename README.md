@@ -9,3 +9,6 @@ Challenges included but werent limited my knowledge of working on the Canvas med
 Unresolved Issues: The inability to acheive collision function within the Red Paddle is what inspired the theme and vision of this Game. I also had an issue applying the Constructor Function to this game.
 
 Creating this game I learned the basics of working on a canvas. I got an intro into animation drawing on canvas. I also got pratice creating functions and for loops controling the drawing of elements. Not to mention alot of googling!
+
+
+GAME URL: marcusg999.github.io/WDIGame
