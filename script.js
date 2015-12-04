@@ -144,6 +144,7 @@ function collisionDetection() {
                     score++;
                     if(score == brickRowCount*brickColumnCount) {
                         alert("CONGRATULATIONS Black & Red on working together to Bring Harmony to the Universe! You WIN!");
+                        (selector).easyModal()
                         document.location.reload();
                     }
                 }
@@ -153,13 +154,13 @@ function collisionDetection() {
 }
 
 function drawScore() {
-    ctx.font = "16px Arial";
+    ctx.font = "26px Arial";
     ctx.fillStyle = "#black";
     ctx.fillText("Score: "+score, 8, 20);
 }
 
 function drawLives() {
-    ctx.font = "16px Arial";
+    ctx.font = "26px Arial";
     ctx.fillStyle = "#black";
     ctx.fillText("Lives: "+lives, canvas.width-65, 20);
 }
@@ -183,16 +184,12 @@ function draw() {
     else if(y + dy > canvas.height-ballRadius) {
         if(x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
-        }
-
-
-        else {
+        }else {
             lives--;
             if(!lives) {
                 alert("Nice Try Player 1!");
                 switchTurn();
-            }
-            else {
+            }else {
                 x = canvas.width/2;
                 y = canvas.height-30;
                 dx = 3;
@@ -210,6 +207,7 @@ function draw() {
     else if(leftPressed && paddleX > 0) {
         paddleX -= 7;
     }
+
 
     x += dx;
     y += dy;
