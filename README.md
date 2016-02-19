@@ -10,6 +10,8 @@ Programing the physics of the ball and the collision dynamics of the paddle and 
 My approach was to carefully plan out the workflow with Treelo.  First laying down and sizing the canvas to desired specifacations. Next drawing the required shapes to excecute the actual game play.  This includes the paddles, Ball, and bricks.
 Adding physics, scoreing and switch turn functions came next. 
 
+This app was made in 4 days during my time in the General Assembly WDI program.
+
 Challenges included but werent limited my knowledge of working on the Canvas medium in javascript.  Comprehending the mathamatics neccasary to 
 acheive the physics of the components.  Actually the inability to acheive collision function within the Red Paddle is what inspired the theme and vision of this Game.
 I also had an issue applying the Constructor Function to this game. 
